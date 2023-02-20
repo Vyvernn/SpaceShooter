@@ -17,6 +17,22 @@ void Ship::Movement(float inputX, float inputY, float deltaTime)
 	Sprite->move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
 }
 
+void Ship::Fire()
+{
+	// Fire projectile from current position (and fire in that direction)
+	// Move the projectile
+	// Destroy the projectile for N seconds OR when it collides with another GameObject
+
+	// Fire projectile is essentially
+	// Instantiate projectile obj
+	// Draw a projectile sprite
+	// Set its values (TimeAlive, damage, speed)
+	// Move the projectile
+
+	// no longer within the game screen or collision 
+
+}
+
 void Ship::BeginPlay()
 {
 }
