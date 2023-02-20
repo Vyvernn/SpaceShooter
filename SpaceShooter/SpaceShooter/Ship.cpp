@@ -3,8 +3,8 @@
 Ship::Ship() :
 	TickableObject("Assets\\PNG\\playerShip1_red.png")
 {
-	// Default speed for now is 5
-	speed = 5.f;
+	// Default speed for now is 425
+	speed = 425.f;
 
 }
 
@@ -48,7 +48,7 @@ void Ship::Tick(float deltaTime)
 	}
 
 	// Need delta time
-	Movement(horizontalValue, verticalValue, 1.f); 
+	Movement(horizontalValue, verticalValue, deltaTime); 
 
 	horizontalValue = 0;
 	verticalValue = 0;

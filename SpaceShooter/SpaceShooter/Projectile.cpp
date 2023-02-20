@@ -23,5 +23,5 @@ void Projectile::Move(float deltaTime)
 
 void Projectile::Tick(float deltaTime)
 {
-	Move(0.005f);
+	Move(deltaTime);
 }

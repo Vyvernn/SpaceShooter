@@ -14,7 +14,7 @@ World::World()
 	ship->sprite.move(400, 200);
 	ObjectList.push_back(ship);
 
-	Projectile* projectile = new Projectile(20, 5);
+	Projectile* projectile = new Projectile(0, 5);
 
 	projectile->sprite.move(600, 400);
 
