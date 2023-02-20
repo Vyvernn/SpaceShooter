@@ -25,4 +25,5 @@ void Ship::Fire()
 
 void Ship::Tick()
 {
+
 }
