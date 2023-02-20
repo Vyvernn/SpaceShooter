@@ -9,15 +9,24 @@
 #endif // _DEBUG
 
 #include <SFML/Graphics.hpp>
+#include "World.h"
 
 using namespace sf;
 
 int main()
 {
-	RenderWindow window(VideoMode::getDesktopMode(), "SFML");
+	sf::RenderWindow window(VideoMode::getDesktopMode(), "SFML");
+
+    World* world = new World();
+    world->Initialise();
 
 	while (window.isOpen())
 	{
+        // Clear
+        window.clear();
+
+
+        //Poll Events
         Event event;
         while (window.pollEvent(event))
         {
@@ -25,8 +34,13 @@ int main()
                 window.close();
         }
 
-        window.clear();
-        //window.draw(shape);
+
+        //Tick
+        world->Update();
+
+        world->Draw(&window);
+
+
         window.display();
 	}
     return 0;
