@@ -7,7 +7,7 @@ public:
 	Projectile(float speed, float damage);
 	void Move(float deltaTime);
 
-	virtual void Tick() override;
+	virtual void Tick(float deltaTime) override;
 private:
 	float speed;
 	float damage;

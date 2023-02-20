@@ -19,15 +19,30 @@ World::World()
 	projectile->sprite.move(600, 400);
 
 	ObjectList.push_back(projectile);
+
+
+	LastFrameTime = clock.getElapsedTime();
 }
 
 
 void World::Update()
 {
-	for (TickableObject* NextObject : ObjectList)
-	{
-		NextObject->Tick();
-	}
+	sf::Time NewFrameTime = clock.getElapsedTime();
+
+	float deltaTime = NewFrameTime.asSeconds() - LastFrameTime.asSeconds();
+
+	//In case we need to cap framerate
+	/*if (deltaTime > 16)
+	{*/
+
+		for (TickableObject* NextObject : ObjectList)
+		{
+			NextObject->Tick(deltaTime);
+		}
+
+		LastFrameTime = NewFrameTime;
+	/*}*/
+
 }
 
 void World::Draw(sf::RenderWindow* window)

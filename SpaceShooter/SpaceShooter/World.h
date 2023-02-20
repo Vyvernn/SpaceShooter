@@ -18,7 +18,13 @@ public:
 
 	vector<TickableObject*> GetObjectList() { return ObjectList; };
 
+
 private:
 	vector<TickableObject*> ObjectList;
+
+	sf::Clock clock;
+
+
+	sf::Time LastFrameTime;
 
 };

@@ -11,7 +11,7 @@ public:
 
 	TickableObject(std::string spriteFilePath);
 
-	virtual void Tick();
+	virtual void Tick(float deltaTime);
 
 	sf::Sprite sprite;
 

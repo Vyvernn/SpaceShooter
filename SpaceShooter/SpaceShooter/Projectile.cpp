@@ -19,7 +19,7 @@ void Projectile::Move(float deltaTime)
 	// Needs to have collision detection
 }
 
-void Projectile::Tick()
+void Projectile::Tick(float deltaTime)
 {
 	Move(0.005f);
 }

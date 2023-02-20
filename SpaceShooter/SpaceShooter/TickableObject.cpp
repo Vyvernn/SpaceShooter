@@ -10,6 +10,6 @@ TickableObject::TickableObject(std::string spriteFilePath)
 	}
 }
 
-void TickableObject::Tick()
+void TickableObject::Tick(float deltaTime)
 {
 }

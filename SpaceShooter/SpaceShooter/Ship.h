@@ -10,7 +10,7 @@ public:
 	void Movement(float inputX, float inputY, float deltaTime);
 	void Fire();
 
-	virtual void Tick() override;
+	virtual void Tick(float deltaTime) override;
 
 private:
 	float speed;

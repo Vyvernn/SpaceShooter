@@ -23,7 +23,7 @@ void Ship::Fire()
 {
 }
 
-void Ship::Tick()
+void Ship::Tick(float deltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
