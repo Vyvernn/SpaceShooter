@@ -16,7 +16,11 @@ Ship::Ship(float givenSpeed) :
 void Ship::Movement(float inputX, float inputY, float deltaTime)
 {
 	// Move up, down, left, and right
-	sprite.move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
+	Sprite->move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
+}
+
+void Ship::BeginPlay()
+{
 }
 
 void Ship::Tick()
