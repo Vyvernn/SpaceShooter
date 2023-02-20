@@ -2,12 +2,16 @@
 #include "TickableObject.h"
 
 
-class Ship : TickableObject
+class Ship : public TickableObject
 {
 public:
 	Ship();
 	Ship(float& givenSpeed);
 	void Movement(float inputX, float inputY, float deltaTime);
+
+	virtual void BeginPlay() override;
+
+	virtual void Tick() override;
 
 private:
 	float speed;

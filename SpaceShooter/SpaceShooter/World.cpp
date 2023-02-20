@@ -1,10 +1,13 @@
 #include "World.h"
 #include "TickableObject.h"
+#include "Ship.h"
 
 
 void World::Initialise()
 {
+	Ship* ship = new Ship();
 
+	ObjectList.push_back(ship);
 }
 
 void World::Update()
