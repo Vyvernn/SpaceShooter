@@ -7,6 +7,8 @@ Projectile::Projectile(float givenSpeed, float givenDamage)
 {
 	speed = givenSpeed;
 	damage = givenDamage;
+
+	// Also need to place the projectile in the position of the ship
 }
 
 void Projectile::Move(float deltaTime)

@@ -5,6 +5,7 @@ Ship::Ship() :
 {
 	// Default speed for now is 5
 	speed = 5.f;
+
 }
 
 Ship::Ship(float givenSpeed) :
@@ -51,4 +52,9 @@ void Ship::Tick(float deltaTime)
 
 	horizontalValue = 0;
 	verticalValue = 0;
+}
+
+void Ship::OnHealthReachZero()
+{
+	// Implement health zero logic here
 }
