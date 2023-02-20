@@ -8,6 +8,10 @@ World::World()
 	Ship* ship = new Ship();
 
 	ObjectList.push_back(ship);
+
+	ship = new Ship();
+	ship->sprite.move(400, 200);
+	ObjectList.push_back(ship);
 }
 
 
