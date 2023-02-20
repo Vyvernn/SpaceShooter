@@ -14,11 +14,12 @@ void Projectile::Move(float deltaTime)
 
 	// TO-DO: move in the facing direction
 	// Move up every frame for now
-	sprite.move(0.f, speed * deltaTime);
+	sprite.move(0.f, -speed * deltaTime);
 
 	// Needs to have collision detection
 }
 
 void Projectile::Tick()
 {
+	Move(0.005f);
 }

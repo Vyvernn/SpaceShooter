@@ -15,6 +15,7 @@ public:
 private:
 	float speed;
 
-	
+	float verticalValue = 0;
+	float horizontalValue = 0;
 	
 };

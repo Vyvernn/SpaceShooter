@@ -25,5 +25,30 @@ void Ship::Fire()
 
 void Ship::Tick()
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		horizontalValue = -1;
+	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		horizontalValue = 1;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		// Pressing up needs to have negative value, otherwise it is moving down
+		verticalValue = -1;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		verticalValue = 1;
+	}
+
+	// Need delta time
+	Movement(horizontalValue, verticalValue, 1.f); 
+
+	horizontalValue = 0;
+	verticalValue = 0;
 }
