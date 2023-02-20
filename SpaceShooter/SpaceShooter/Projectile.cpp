@@ -2,14 +2,14 @@
 #include "ShooterFunction.h"
 
 // The value passed here should be the ship's speed and damage
-Projectile::Projectile(float& givenSpeed, float& givenDamage) 
-	: TickableObject("")
+Projectile::Projectile(float givenSpeed, float givenDamage) 
+	: TickableObject("Assets/PNG/Effects/BasicProjectile.png")
 {
 	speed = givenSpeed;
 	damage = givenDamage;
 }
 
-void Projectile::Move(float& deltaTime)
+void Projectile::Move(float deltaTime)
 {
 
 	// TO-DO: move in the facing direction

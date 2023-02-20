@@ -19,6 +19,10 @@ void Ship::Movement(float inputX, float inputY, float deltaTime)
 	sprite.move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
 }
 
+void Ship::Fire()
+{
+}
+
 void Ship::Tick()
 {
 }

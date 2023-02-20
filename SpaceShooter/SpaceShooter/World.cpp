@@ -1,6 +1,7 @@
 #include "World.h"
 #include "TickableObject.h"
 #include "Ship.h"
+#include "Projectile.h"
 
 
 World::World()
@@ -12,6 +13,12 @@ World::World()
 	ship = new Ship();
 	ship->sprite.move(400, 200);
 	ObjectList.push_back(ship);
+
+	Projectile* projectile = new Projectile(20, 5);
+
+	projectile->sprite.move(600, 400);
+
+	ObjectList.push_back(projectile);
 }
 
 
