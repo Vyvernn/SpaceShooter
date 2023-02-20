@@ -1,12 +1,14 @@
 #include "Ship.h"
 
-Ship::Ship()
+Ship::Ship() :
+	TickableObject("Assets\\PNG\\playerShip1_red.png")
 {
 	// Default speed for now is 5
 	speed = 5.f;
 }
 
-Ship::Ship(float& givenSpeed)
+Ship::Ship(float givenSpeed) :
+	TickableObject("Assets\\PNG\\playerShip1_red.png")
 {
 	speed = givenSpeed;
 }
@@ -14,11 +16,7 @@ Ship::Ship(float& givenSpeed)
 void Ship::Movement(float inputX, float inputY, float deltaTime)
 {
 	// Move up, down, left, and right
-	Sprite->move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
-}
-
-void Ship::BeginPlay()
-{
+	sprite.move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
 }
 
 void Ship::Tick()

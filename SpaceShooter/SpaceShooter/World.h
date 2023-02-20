@@ -8,10 +8,9 @@ using namespace std;
 /** This classes job is to keep a reference for all objects we have created, update them and draw them */
 class World
 {
-
 public:
 
-	void Initialise();
+	World();
 
 	void Update();
 

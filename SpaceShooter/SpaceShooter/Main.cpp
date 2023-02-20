@@ -18,7 +18,6 @@ int main()
 	sf::RenderWindow window(VideoMode::getDesktopMode(), "SFML");
 
     World* world = new World();
-    world->Initialise();
 
 	while (window.isOpen())
 	{

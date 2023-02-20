@@ -6,10 +6,8 @@ class Ship : public TickableObject
 {
 public:
 	Ship();
-	Ship(float& givenSpeed);
+	Ship(float givenSpeed);
 	void Movement(float inputX, float inputY, float deltaTime);
-
-	virtual void BeginPlay() override;
 
 	virtual void Tick() override;
 

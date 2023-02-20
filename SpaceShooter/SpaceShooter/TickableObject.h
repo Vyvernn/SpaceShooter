@@ -4,10 +4,17 @@
 
 class TickableObject
 {
-public: 
-	virtual void BeginPlay() = 0;
-	virtual void Tick() = 0;
+	TickableObject() = delete;
 
-	sf::Sprite* Sprite;
+
+public: 
+
+	TickableObject(std::string spriteFilePath);
+
+	virtual void Tick();
+
+	sf::Sprite sprite;
+
+	sf::Texture texture;
 
 };
