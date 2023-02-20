@@ -1,8 +1,19 @@
 #include "ShooterFunction.h"
 
-void Collision()
+
+bool RadialSpriteCollision(sf::Vector2f PositionA, float RadiusA, sf::Vector2f PositionB, float RadiusB)
 {
-	// IF the circle edge (ShipA) touches another circle edge (ShipB) THEN 
-	//		both ships collide
-	//		Do some collision logic
+	// X^2 + Y^2 = Dist^2
+	// .. if X^2 + Y^2 < (r1+r2)^2 -> Collision = true
+	float xDist = PositionA.x - PositionB.x;
+	float yDist = PositionA.y - PositionB.y;
+
+	float xDistSqrd = xDist * xDist;
+	float yDistSqrd = yDist * yDist;
+
+	float DistSqrd = xDistSqrd + yDistSqrd;
+
+	float MinDistSqrd = (RadiusA + RadiusB) * (RadiusA + RadiusB);
+
+	return DistSqrd < MinDistSqrd;
 }
