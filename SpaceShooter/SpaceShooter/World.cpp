@@ -15,11 +15,20 @@ World::World()
 	ship->sprite.move(400, 200);
 	ObjectList.push_back(ship);
 
-	Projectile* projectile = new Projectile(0, 5);
-
+	Projectile* projectile = new Projectile(10, 5);
+	// Initialise the starting position of the projectile
 	projectile->sprite.move(600, 400);
-
 	ObjectList.push_back(projectile);
+
+	int maxProjectiles = 40;
+	for (int i = 0; i < maxProjectiles; i++)
+	{
+		Projectile* projA = new Projectile(15, 5);
+		projA->sprite.move(900 + (i * 20), 400);		// TODO - Move outside of the screen
+		ObjectList.push_back(projA);					// Put them in this list you will be drawing them
+		projectiles.push_back(projA);					// Putting in them here just stores them.
+	}
+
 
 
 	LastFrameTime = clock.getElapsedTime();

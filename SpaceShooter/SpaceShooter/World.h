@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 class TickableObject;
+class Projectile;
 
 using namespace std;
 
