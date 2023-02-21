@@ -8,6 +8,8 @@ Ship::Ship(float givenSpeed, World* world) :
 	speed = 425;
 	speed = givenSpeed;
 	Radius = max(sprite.getGlobalBounds().height, sprite.getGlobalBounds().width) / 2;
+
+	InitHealthBar("Assets\\PNG\\UI\\buttonRed.png");
 }
 
 void Ship::Movement(float inputX, float inputY, float deltaTime)
@@ -29,6 +31,7 @@ void Ship::Fire()
 void Ship::Tick(float deltaTime) 
 {
 	Position = sprite.getPosition();
+	HealthBarSprite.setPosition(Position + sf::Vector2f(0,100));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{

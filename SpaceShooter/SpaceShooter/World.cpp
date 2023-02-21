@@ -74,7 +74,13 @@ void World::Draw(sf::RenderWindow* window)
 	{
 		window->draw(NextObject->sprite);
 
-		if()
+		if (IHealthInterface* HealthInterface = dynamic_cast<IHealthInterface*>(NextObject))
+		{
+			if (HealthInterface->bShowHealthBar)
+			{
+				window->draw(HealthInterface->HealthBarSprite);
+			}
+		}
 	}
 }
 
