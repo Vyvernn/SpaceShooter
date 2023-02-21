@@ -1,11 +1,11 @@
 #pragma once
 
-class Health
+class HealthComponent
 {
 public:
-	Health();
+	HealthComponent();
 
-	Health(float givenHealth);
+	HealthComponent(float givenHealth);
 
 	void TakeDamage(float damage);
 

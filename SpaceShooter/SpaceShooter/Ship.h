@@ -4,7 +4,7 @@
 #include "World.h"
 #include "CollisionComponent.h"
 
-class Ship : public TickableObject, public Health, public ICollisionInterface
+class Ship : public TickableObject, public HealthComponent, public ICollisionInterface
 {
 public:
 
