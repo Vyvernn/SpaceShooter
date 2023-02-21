@@ -18,13 +18,12 @@ void Ship::Movement(float inputX, float inputY, float deltaTime)
 
 void Ship::Fire()
 {
-	//Projectile* proj = world->GetProjectiles()[0];
-	//world->GetObjectList().push_back(proj);
-	std::cout << "Position of sprite: ";
-	//std::cout << sprite.getPosition().x << "," << sprite.getPosition().y << std::endl;
+	// Enable the projectile Tick
+	world->GetProjectileList()[0]->SetIsTickOn(true);
+	// "Spawn" projectiles from the player's position
+	world->GetProjectileList()[0]->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y );
 
- 	//Projectile* proj = world->GetProjectiles()[0];
-
+	
 }
 
 void Ship::Tick(float deltaTime) 
@@ -52,7 +51,6 @@ void Ship::Tick(float deltaTime)
 		verticalValue = 1;
 	}
 
-	// Need delta time
 	Movement(horizontalValue, verticalValue, deltaTime);
 
 	horizontalValue = 0;
@@ -60,7 +58,7 @@ void Ship::Tick(float deltaTime)
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 	{
-		//Fire();
+		Fire();
 	}
 }
 

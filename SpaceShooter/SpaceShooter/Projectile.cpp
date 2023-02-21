@@ -2,33 +2,34 @@
 #include "ShooterFunction.h"
 
 // The value passed here should be the ship's speed and damage
-Projectile::Projectile(float givenSpeed, float givenDamage, World* world) 
-	: TickableObject("Assets/PNG/Effects/BasicProjectile.png", world)
+Projectile::Projectile(float givenSpeed, float givenDamage, World* givenWorld) 
+	: TickableObject("Assets/PNG/Effects/BasicProjectile.png", givenWorld)
 {
 	speed = givenSpeed;
 	damage = givenDamage;
-
+	isTickOn = false;		// Turn this on when we call Ship.Fire
 	Radius = 5;
-
-	// Also need to place the projectile in the position of the ship
 }
 
 void Projectile::Move(float deltaTime)
 {
-
 	// TO-DO: move in the facing direction
 	// Move up every frame for now
 	sprite.move(0.f, -speed * deltaTime);
-
-	// Needs to have collision detection
 }
 
 void Projectile::Tick(float deltaTime)
 {
+	if (!isTickOn) { return; }
 	Position = sprite.getPosition();
 	Move(deltaTime);
 }
 
 void Projectile::Hit(ICollisionInterface* Instigator)
 {
+}
+
+void Projectile::SetIsTickOn(bool value)
+{
+	isTickOn = value;
 }

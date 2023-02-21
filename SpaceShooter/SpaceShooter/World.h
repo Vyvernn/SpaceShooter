@@ -22,6 +22,7 @@ public:
 
 	vector<TickableObject*> GetObjectList() { return ObjectList; };
 
+	vector<Projectile*> GetProjectileList() { return ProjectileList; }
 
 	static sf::Texture GetTexture(string filepath);
 
@@ -30,6 +31,8 @@ public:
 
 private:
 	vector<TickableObject*> ObjectList;
+
+	vector<Projectile*> ProjectileList;
 
 	sf::Clock clock;
 

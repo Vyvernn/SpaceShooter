@@ -9,7 +9,7 @@ class TickableObject
 
 public: 
 
-	TickableObject(std::string spriteFilePath, World* world);
+	TickableObject(std::string spriteFilePath, World* givenWorld);
 
 	virtual void Tick(float deltaTime);
 
@@ -17,4 +17,5 @@ public:
 
 	sf::Texture texture;
 
+	World* world;
 };

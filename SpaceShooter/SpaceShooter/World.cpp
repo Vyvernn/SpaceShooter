@@ -18,7 +18,7 @@ World::World()
 		Projectile* projA = new Projectile(15, 5, this);
 		projA->sprite.move(900 + (i * 20), 400);		// TODO - Move outside of the screen
 		ObjectList.push_back(projA);					// Put them in this list you will be drawing them
-		//projectiles.push_back(projA);					// Putting in them here just stores them.
+		ProjectileList.push_back(projA);				// Putting in them here just stores them.
 	}
 
 
