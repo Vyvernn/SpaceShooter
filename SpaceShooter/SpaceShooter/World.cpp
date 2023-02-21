@@ -37,16 +37,20 @@ void World::Update()
 	{
 		if (ICollisionInterface* InterfaceA = dynamic_cast<ICollisionInterface*>(ObjectA))
 		{
-			for (TickableObject* ObjectB : ObjectList)
+			if (InterfaceA->bIsInstigatingCollision)
 			{
-				if(ObjectA != ObjectB)
+				for (TickableObject* ObjectB : ObjectList)
 				{
-					if (ICollisionInterface* InterfaceB = dynamic_cast<ICollisionInterface*>(ObjectB))
+					if (ObjectA != ObjectB)
 					{
-						InterfaceA->CheckCollisionWith(InterfaceB);
+						if (ICollisionInterface* InterfaceB = dynamic_cast<ICollisionInterface*>(ObjectB))
+						{
+							InterfaceA->CheckCollisionWith(InterfaceB);
+						}
 					}
 				}
 			}
+			
 		}
 	}
 
