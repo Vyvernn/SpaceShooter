@@ -31,7 +31,7 @@ void Ship::Fire(World* world)
 	//std::cout << sprite.getPosition().x << "," << sprite.getPosition().y << std::endl;
 
  	//Projectile* proj = world->GetProjectiles()[0];
-	for (int i = 0; i)
+	for (int i = 0; i; i++)
 	{
 
 	}
@@ -68,7 +68,7 @@ void Ship::Tick(float deltaTime)
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 	{
-		Fire();
+		//Fire();
 	}
 }
 

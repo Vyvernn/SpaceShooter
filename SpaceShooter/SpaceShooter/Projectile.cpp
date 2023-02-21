@@ -25,3 +25,7 @@ void Projectile::Tick(float deltaTime)
 {
 	Move(deltaTime);
 }
+
+void Projectile::Hit(ICollisionInterface* Instigator)
+{
+}

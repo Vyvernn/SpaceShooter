@@ -1,5 +1,6 @@
 #pragma once
 #include "TickableObject.h"
+#include "CollisionComponent.h"
 
 class Projectile : public TickableObject, ICollisionInterface
 {
@@ -8,6 +9,8 @@ public:
 	void Move(float deltaTime);
 
 	virtual void Tick(float deltaTime) override;
+
+	virtual void Hit(ICollisionInterface* Instigator) override;
 
 	float GetDamage() { return damage; };
 private:
