@@ -12,15 +12,6 @@ World::World()
 
 	ObjectList.push_back(ship);
 
-	ship = new Ship();
-	ship->sprite.move(400, 200);
-	ObjectList.push_back(ship);
-
-	Projectile* projectile = new Projectile(10, 5);
-	// Initialise the starting position of the projectile
-	projectile->sprite.move(600, 400);
-	ObjectList.push_back(projectile);
-
 	int maxProjectiles = 40;
 	for (int i = 0; i < maxProjectiles; i++)
 	{
