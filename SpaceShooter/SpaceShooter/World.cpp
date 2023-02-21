@@ -73,6 +73,8 @@ void World::Draw(sf::RenderWindow* window)
 	for (TickableObject* NextObject : ObjectList)
 	{
 		window->draw(NextObject->sprite);
+
+		if()
 	}
 }
 
