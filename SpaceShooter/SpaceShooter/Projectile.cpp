@@ -8,6 +8,8 @@ Projectile::Projectile(float givenSpeed, float givenDamage, World* world)
 	speed = givenSpeed;
 	damage = givenDamage;
 
+	Radius = 5;
+
 	// Also need to place the projectile in the position of the ship
 }
 
@@ -23,6 +25,7 @@ void Projectile::Move(float deltaTime)
 
 void Projectile::Tick(float deltaTime)
 {
+	Position = sprite.getPosition();
 	Move(deltaTime);
 }
 

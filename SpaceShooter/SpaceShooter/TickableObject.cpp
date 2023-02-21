@@ -16,8 +16,4 @@ TickableObject::TickableObject(std::string textureFilePath, World* world)
 
 void TickableObject::Tick(float deltaTime)
 {
-	if (ICollisionInterface* CollisionInterface = dynamic_cast<ICollisionInterface*>(this))
-	{
-		CollisionInterface->Position = sprite.getPosition();
-	}
 }

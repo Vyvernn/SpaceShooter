@@ -2,14 +2,12 @@
 #include <iostream>
 #include "Projectile.h"
 
-
-
-
 Ship::Ship(float givenSpeed, World* world) :
 	TickableObject("Assets\\PNG\\playerShip1_red.png", world)
 {
 	speed = 425;
 	speed = givenSpeed;
+	Radius = max(sprite.getGlobalBounds().height, sprite.getGlobalBounds().width) / 2;
 }
 
 void Ship::Movement(float inputX, float inputY, float deltaTime)
@@ -29,8 +27,10 @@ void Ship::Fire()
 
 }
 
-void Ship::Tick(float deltaTime)
+void Ship::Tick(float deltaTime) 
 {
+	Position = sprite.getPosition();
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		horizontalValue = -1;

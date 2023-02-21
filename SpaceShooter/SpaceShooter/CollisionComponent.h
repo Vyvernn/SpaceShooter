@@ -11,12 +11,12 @@ public:
 	/** Called when this object is hit by another object */
 	virtual void Hit(ICollisionInterface* Instigator) = 0;
 
-	float Radius;
+	float Radius = 5;
 
 	sf::Vector2f Position;
 
 
-	bool bIsInstigatingCollision;
+	bool bIsInstigatingCollision = true;
 
 
 	void CheckCollisionWith(ICollisionInterface* OtherObject);

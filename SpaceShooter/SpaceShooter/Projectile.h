@@ -3,7 +3,7 @@
 #include "CollisionComponent.h"
 #include "World.h"
 
-class Projectile : public TickableObject, ICollisionInterface
+class Projectile : public TickableObject, public ICollisionInterface
 {
 public:
 	Projectile(float givenSpeed, float givenDamage, World* world);
