@@ -3,6 +3,7 @@
 #include "Ship.h"
 #include "Projectile.h"
 
+map<string, sf::Texture> World::TextureMap;
 
 World::World()
 {
@@ -51,4 +52,42 @@ void World::Draw(sf::RenderWindow* window)
 	{
 		window->draw(NextObject->sprite);
 	}
+}
+
+bool World::LoadTexture(string filepath)
+{
+	//if we've already loaded this texture then just return
+	if (TextureMap.count(filepath) == 1)
+	{
+		return true;
+	}
+
+	//else try load the texture
+	sf::Texture texture;
+	if (texture.loadFromFile(filepath))
+	{
+		TextureMap[filepath] = texture;
+		return true;
+	}
+
+	//if we can't find it then return false
+	return false;
+}
+
+sf::Texture World::GetTexture(string filepath)
+{
+	//Check whether we've loaded this texture first
+	if (TextureMap.count(filepath) == 1)
+	{
+		return TextureMap[filepath];
+	}
+
+	//Attempt to load the texture next
+	if (LoadTexture(filepath))
+	{
+		return TextureMap[filepath];
+	}
+
+	//"An attempt was made"
+	return sf::Texture();
 }

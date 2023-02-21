@@ -1,4 +1,5 @@
 #include <vector>
+#include <map>
 #include <SFML/Graphics.hpp>
 
 class TickableObject;
@@ -19,12 +20,18 @@ public:
 	vector<TickableObject*> GetObjectList() { return ObjectList; };
 
 
+	static sf::Texture GetTexture(string filepath);
+
+	static map<string, sf::Texture> TextureMap;
+
+
 private:
 	vector<TickableObject*> ObjectList;
 
 	sf::Clock clock;
 
-
 	sf::Time LastFrameTime;
+
+	static bool LoadTexture(string filepath);
 
 };
