@@ -1,11 +1,11 @@
 #pragma once
 
-class Health
+class IHealthInterface
 {
 public:
-	Health();
+	IHealthInterface();
 
-	Health(float givenHealth);
+	IHealthInterface(float givenHealth);
 
 	void TakeDamage(float damage);
 

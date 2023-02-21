@@ -1,16 +1,16 @@
 #include "Health.h"
 
-Health::Health()
+IHealthInterface::IHealthInterface()
 {
 	health = 20.f;
 }
 
-Health::Health(float givenHealth)
+IHealthInterface::IHealthInterface(float givenHealth)
 {
 	health = givenHealth;
 }
 // Call this when collision happens (Collision between ShipA and asteroid)
-void Health::TakeDamage(float damage)
+void IHealthInterface::TakeDamage(float damage)
 {
 	health -= damage;
 
