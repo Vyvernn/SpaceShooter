@@ -31,5 +31,5 @@ void Projectile::Tick(float deltaTime)
 
 void Projectile::Hit(ICollisionInterface* Instigator)
 {
-
+	//We don't really care if we're hit
 }
