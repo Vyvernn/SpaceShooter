@@ -2,8 +2,9 @@
 #include "TickableObject.h"
 #include "Health.h"
 #include "World.h"
+#include "CollisionComponent.h"
 
-class Ship : public TickableObject, Health
+class Ship : public TickableObject, Health, ICollisionInterface
 {
 public:
 
@@ -18,6 +19,8 @@ public:
 	virtual void Tick(float deltaTime) override;
 
 	virtual void OnHealthReachZero() override;
+
+	virtual void Hit(ICollisionInterface* Instigator);
 
 private:
 

@@ -2,6 +2,7 @@
 #include "TickableObject.h"
 #include "Ship.h"
 #include "Projectile.h"
+#include "CollisionComponent.h"
 
 map<string, sf::Texture> World::TextureMap;
 
@@ -40,6 +41,20 @@ void World::Update()
 	sf::Time NewFrameTime = clock.getElapsedTime();
 
 	float deltaTime = NewFrameTime.asSeconds() - LastFrameTime.asSeconds();
+
+	for (TickableObject* ObjectA : ObjectList)
+	{
+		if (ICollisionInterface* InterfaceA = dynamic_cast<ICollisionInterface*>(ObjectA))
+		{
+			for (TickableObject* ObjectB : ObjectList)
+			{
+				if (ICollisionInterface* InterfaceB = dynamic_cast<ICollisionInterface*>(ObjectB))
+				{
+					InterfaceA->CheckCollisionWith(InterfaceB);
+				}
+			}
+		}
+	}
 
 	//In case we need to cap framerate
 	/*if (deltaTime > 16)

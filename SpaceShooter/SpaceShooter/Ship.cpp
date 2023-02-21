@@ -1,5 +1,6 @@
 #include "Ship.h"
 #include <iostream>
+#include "Projectile.h"
 
 
 Ship::Ship() :
@@ -74,4 +75,12 @@ void Ship::Tick(float deltaTime)
 void Ship::OnHealthReachZero()
 {
 	// Implement health zero logic here
+}
+
+void Ship::Hit(ICollisionInterface* Instigator)
+{
+	if (Projectile* projectile = dynamic_cast<Projectile*>(Instigator))
+	{
+		TakeDamage(projectile->GetDamage());
+	}
 }
