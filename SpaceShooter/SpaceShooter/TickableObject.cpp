@@ -1,8 +1,8 @@
 #include "TickableObject.h"
-#include "World.h"
+//#include "World.h"
 #include "CollisionComponent.h"
 
-TickableObject::TickableObject(std::string textureFilePath)
+TickableObject::TickableObject(std::string textureFilePath, World* world)
 {
 	texture = World::GetTexture(textureFilePath);
 

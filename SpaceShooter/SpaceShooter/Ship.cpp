@@ -3,17 +3,12 @@
 #include "Projectile.h"
 
 
-Ship::Ship() :
-	TickableObject("Assets\\PNG\\playerShip1_red.png")
-{
-	// Default speed for now is 425
-	speed = 425.f;
 
-}
 
-Ship::Ship(float givenSpeed) :
-	TickableObject("Assets\\PNG\\playerShip1_red.png")
+Ship::Ship(float givenSpeed, World* world) :
+	TickableObject("Assets\\PNG\\playerShip1_red.png", world)
 {
+	speed = 425;
 	speed = givenSpeed;
 }
 
@@ -23,7 +18,7 @@ void Ship::Movement(float inputX, float inputY, float deltaTime)
 	sprite.move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
 }
 
-void Ship::Fire(World* world)
+void Ship::Fire()
 {
 	//Projectile* proj = world->GetProjectiles()[0];
 	//world->GetObjectList().push_back(proj);
@@ -31,10 +26,7 @@ void Ship::Fire(World* world)
 	//std::cout << sprite.getPosition().x << "," << sprite.getPosition().y << std::endl;
 
  	//Projectile* proj = world->GetProjectiles()[0];
-	for (int i = 0; i; i++)
-	{
 
-	}
 }
 
 void Ship::Tick(float deltaTime)

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-
+#include "World.h"
 class TickableObject
 {
 	TickableObject() = delete;
@@ -9,7 +9,7 @@ class TickableObject
 
 public: 
 
-	TickableObject(std::string spriteFilePath);
+	TickableObject(std::string spriteFilePath, World* world);
 
 	virtual void Tick(float deltaTime);
 

@@ -8,13 +8,13 @@ class Ship : public TickableObject, Health, ICollisionInterface
 {
 public:
 
-	Ship();
+	//Ship();
 
-	Ship(float givenSpeed);
+	Ship(float givenSpeed, World* world);
 
 	void Movement(float inputX, float inputY, float deltaTime);
 
-	void Fire(World* world);
+	void Fire();
 
 	virtual void Tick(float deltaTime) override;
 
