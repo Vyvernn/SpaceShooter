@@ -30,6 +30,8 @@ void Ship::Fire()
 	// Get the first element on the Queue (list) and enable and spawn it
 	Projectile* projPtr = world->GetProjectileList().front();
 
+	projPtr->SetOwner(this);
+
 	projPtr->SetIsTickOn(true);
 	projPtr->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y - 100.f);
 	projPtr->SetDirection(GetDirectionToMousePos(projPtr->sprite));

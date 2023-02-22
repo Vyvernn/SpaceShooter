@@ -3,6 +3,8 @@
 #include "Ship.h"
 #include "Projectile.h"
 #include "CollisionComponent.h"
+#include <stdlib.h>
+#include <time.h>
 
 map<string, sf::Texture> World::TextureMap;
 
@@ -15,13 +17,45 @@ World::World()
 	int maxProjectiles = 40;
 	for (int i = 0; i < maxProjectiles; i++)
 	{
-		Projectile* projA = new Projectile(750, 5, this);
-		projA->sprite.move(20000, 20000);				// Moves outside of the screen
-		ObjectList.push_back(projA);					// Put them in this list you will be drawing them
-		ProjectileList.push(projA);				// This is a queue		// Putting in them here just stores them.
+		Projectile* projectile = new Projectile(750, 5, this);
+
+		// Set starting position to outside of the screen
+		projectile->sprite.move(20000, 20000);
+
+		// Put them in this list and it will be drawn and shown in the screen
+		ObjectList.push_back(projectile);
+
+		// Keep track of ship projectiles seperately (in a queue)
+		ProjectileList.push(projectile);
 	}
 
+	// Initialize random seed
+	srand(time(NULL));
 
+	int maxAsteroids = 5;
+	for (int i = 0; i < maxAsteroids; i++)
+	{
+		// Random between 0 and 1919
+		int randNumX = rand() % 1920;								
+		int randNumY = rand() % 1080;
+
+		// Random between 1 and 250
+		int asteroidSpeed = rand() % 250 + 1;
+		int asteroidDirectionX = rand() % 360 + (-180);
+		int asteroidDirectionY = rand() % 360 + (-180);
+		Projectile* asteroid = new Projectile(asteroidSpeed, 10, this);
+		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+
+		// Randomly set the starting position of each asteroid
+		asteroid->sprite.move(randNumX, randNumY);
+		asteroid->SetIsTickOn(true);
+		//asteroid->bIsInstigatingCollision = true;
+
+		// Add to the list so it can be drawn and seen in the world
+		ObjectList.push_back(asteroid);
+	}
+
+	
 
 	LastFrameTime = clock.getElapsedTime();
 }

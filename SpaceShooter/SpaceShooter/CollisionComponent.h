@@ -26,7 +26,9 @@ public:
 
 	void CheckCollisionWith(ICollisionInterface* OtherObject);
 
-
+	void SetOwner(ICollisionInterface* givenOwner);
+private:
+	ICollisionInterface* owner;
 };
 
 class CCollisionComponent
