@@ -70,8 +70,8 @@ void Asteroid::OnExitedScreenSpace()
 
 void Asteroid::Reset()
 {
-	int newStartingPositionX = rand() % 400 + 400;
-	int newStartingPositionY = rand() % 200 + 400;
+	int newStartingPositionX = rand() % 2000;
+	int newStartingPositionY = rand() % 1100;
 
 	int newDirectionX = rand() % 360 + (-180);
 	int newDirectionY = rand() % 360 + (-180);
