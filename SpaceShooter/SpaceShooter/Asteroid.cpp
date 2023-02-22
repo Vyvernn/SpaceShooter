@@ -2,12 +2,14 @@
 #include "TickableObject.h"
 #include "World.h"
 
-Asteroid::Asteroid(float Speed, float Damage, World* givenWorld, string textureFilePath) 
+Asteroid::Asteroid(float Speed, float Damage, float defaultHealth,  World* givenWorld, string textureFilePath) 
 	: Projectile(Speed, Damage, givenWorld, textureFilePath)
 {
 	bIsInstigatingCollision = true;
 	bCanBeHit = true;
 	Radius = max(sprite.getGlobalBounds().height, sprite.getGlobalBounds().width) / 2;
+
+	MaxHealth = health = defaultHealth;
 	
 	InitHealthBar("Assets\\PNG\\UI\\buttonRed.png");
 }

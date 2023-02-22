@@ -90,7 +90,7 @@ World::World()
 
 		int ImageIndex = rand() % BigAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 50, this, BigAsteroidImageFilePaths[ImageIndex]);
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 30, 50, this, BigAsteroidImageFilePaths[ImageIndex]);
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid
@@ -118,7 +118,7 @@ World::World()
 
 		int ImageIndex = rand() % MediumAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 20, this, MediumAsteroidImageFilePaths[ImageIndex]);
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 15, 20, this, MediumAsteroidImageFilePaths[ImageIndex]);
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid
@@ -145,7 +145,7 @@ World::World()
 
 		int ImageIndex = rand() % SmallAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 5, this, SmallAsteroidImageFilePaths[ImageIndex]);
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 3, 10, this, SmallAsteroidImageFilePaths[ImageIndex]);
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid
@@ -172,7 +172,7 @@ World::World()
 
 		int ImageIndex = rand() % TinyAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 0, this, TinyAsteroidImageFilePaths[0]);
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 0, 5, this, TinyAsteroidImageFilePaths[0]);
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid

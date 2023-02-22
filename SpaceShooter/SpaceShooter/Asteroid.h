@@ -9,7 +9,7 @@ class Asteroid : public Projectile, public IHealthInterface
 {
 public:
 
-	Asteroid(float Speed, float Damage, World* world, string textureFilePath);
+	Asteroid(float Speed, float Damage, float defaultHealth, World* world, string textureFilePath);
 	
 
 	virtual void Hit(ICollisionInterface* Instigator) override;
