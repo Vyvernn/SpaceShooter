@@ -56,3 +56,14 @@ static float RadiansToDegrees(float Radians)
 {
 	return Radians * (180.f / 3.14f);
 }
+
+static sf::Vector2f GetMousePos()
+{
+	sf::Vector2i mousePositionInt = sf::Mouse::getPosition();
+	return sf::Vector2f(static_cast<float>(mousePositionInt.x), static_cast<float>(mousePositionInt.y));
+}
+
+static sf::Vector2f GetDirectionToMousePos(sf::Sprite sprite)
+{
+	return GetMousePos() - sprite.getPosition();
+}

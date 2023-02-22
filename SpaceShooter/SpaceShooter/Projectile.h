@@ -22,6 +22,8 @@ public:
 	void SetIsTickOn(bool value);
 
 	void SetDirection(sf::Vector2f newDirection);
+
+	void UpdateRotation();
 private:
 	float speed;
 	float damage;

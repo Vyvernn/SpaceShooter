@@ -26,6 +26,7 @@ void Projectile::Move(float deltaTime)
 void Projectile::Tick(float deltaTime)
 {
 	if (!isTickOn) { return; }
+	UpdateRotation();
 	bIsInstigatingCollision = true;
 	Position = sprite.getPosition();
 	Move(deltaTime);
@@ -60,4 +61,24 @@ void Projectile::SetIsTickOn(bool value)
 void Projectile::SetDirection(sf::Vector2f newDirection)
 {
 	direction = Normalize(newDirection);
+}
+
+
+void Projectile::UpdateRotation()
+{
+	sf::Vector2f VectorTo = Normalize(direction);
+
+	float DotProduct = Dot(VectorTo, sf::Vector2f(0, -1));
+
+
+	float Radians = acos(DotProduct);
+
+	float Angle = RadiansToDegrees(acos(DotProduct));
+
+	if (VectorTo.x < 0)
+	{
+		Angle *= -1;
+	}
+
+	sprite.setRotation(Angle);
 }

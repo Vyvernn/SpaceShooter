@@ -32,6 +32,11 @@ void Ship::Fire()
 
 	projPtr->SetIsTickOn(true);
 	projPtr->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y - 100.f);
+	projPtr->sprite.setRotation(this->sprite.getRotation());
+
+	
+
+	projPtr->SetDirection(GetDirectionToMousePos(projPtr->sprite));
 
 	// Remove the first element and push that element to the last
 	world->GetProjectileList().pop();
@@ -115,11 +120,7 @@ void Ship::UpdateHealthBar()
 
 void Ship::UpdateRotation()
 {
-	sf::Vector2i mousePositionInt = sf::Mouse::getPosition();
-	sf::Vector2f mousePosition = sf::Vector2f(static_cast<float>(mousePositionInt.x), static_cast<float>(mousePositionInt.y));
-
-
-	sf::Vector2f VectorTo = mousePosition - Position;
+	sf::Vector2f VectorTo = GetDirectionToMousePos(sprite);
 	VectorTo = Normalize(VectorTo);
 
 	float DotProduct = Dot(VectorTo, sf::Vector2f(0, -1));
