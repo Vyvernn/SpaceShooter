@@ -77,11 +77,15 @@ void IHealthInterface::CreateHealthbar(string textureFilePath)
 
 void IHealthInterface::UpdateHealthbarUI()
 {
-	HealthBarFillShape->setFillColor(sf::Color::Green);
+	if (HealthBarFillShape)
+	{
 
-	float HealthbarRatio = health / MaxHealth;
+		HealthBarFillShape->setFillColor(sf::Color::Green);
 
-	HealthBarFillShape->setSize(sf::Vector2f(Lerp(0, HealthBarWidth, HealthbarRatio), HealthBarHeight));
-	HealthBarFillShape->setOrigin(HealthBarFillShape->getSize().x / 2, HealthBarHeight / 2);
+		float HealthbarRatio = health / MaxHealth;
+
+		HealthBarFillShape->setSize(sf::Vector2f(Lerp(0, HealthBarWidth, HealthbarRatio), HealthBarHeight));
+		HealthBarFillShape->setOrigin(HealthBarFillShape->getSize().x / 2, HealthBarHeight / 2);
+	}
 }
 

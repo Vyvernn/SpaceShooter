@@ -11,11 +11,15 @@ Asteroid::Asteroid(float Speed, float Damage, float defaultHealth,  World* given
 
 	MaxHealth = health = defaultHealth;
 	
-	InitHealthBar("Assets\\PNG\\UI\\buttonRed.png");
+	//InitHealthBar("Assets\\PNG\\UI\\buttonRed.png");
 }
 
 void Asteroid::Hit(ICollisionInterface* Instigator)
 {
+	if (Asteroid* otherObj = dynamic_cast<Asteroid*>(Instigator))
+	{
+		return;
+	}
 	if (Projectile* projectile = dynamic_cast<Projectile*>(Instigator))
 	{
 		TakeDamage(projectile->GetDamage());
@@ -24,6 +28,10 @@ void Asteroid::Hit(ICollisionInterface* Instigator)
 
 void Asteroid::OnHit(ICollisionInterface* HitObject)
 {
+	if (Asteroid* otherObj = dynamic_cast<Asteroid*>(HitObject))
+	{
+		return;
+	}
 	SetIsTickOn(false);
 	bIsInstigatingCollision = false;
 	TakeDamage(health);
@@ -44,8 +52,12 @@ void Asteroid::Tick(float deltaTime)
 
 
 	//Location
-	HealthBarSprite->setPosition(Position + sf::Vector2f(0, 100));
-	HealthBarFillShape->setPosition(HealthBarSprite->getPosition());
+	if (HealthBarSprite && HealthBarFillShape)
+	{
+		HealthBarSprite->setPosition(Position + sf::Vector2f(0, 100));
+		HealthBarFillShape->setPosition(HealthBarSprite->getPosition());
+
+	}
 
 	//UI
 	UpdateHealthbarUI();

@@ -76,7 +76,7 @@ World::World()
 	// Initialize random seed
 	srand(time(NULL));
 
-	int maxBigAsteroids = 5;
+	int maxBigAsteroids = 10;
 	for (int i = 0; i < maxBigAsteroids; i++)
 	{
 		// Random between 0 and 1919
@@ -90,7 +90,7 @@ World::World()
 
 		int ImageIndex = rand() % BigAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 30, 50, this, BigAsteroidImageFilePaths[ImageIndex]);
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 30, 35, this, BigAsteroidImageFilePaths[ImageIndex]);
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid
@@ -103,7 +103,7 @@ World::World()
 	}
 
 
-	int maxMediumAsteroids = 10;
+	int maxMediumAsteroids = 5;
 	for (int i = 0; i < maxMediumAsteroids; i++)
 	{
 		// Random between 0 and 1919
@@ -130,7 +130,7 @@ World::World()
 		ObjectList.push_back(asteroid);
 	}
 
-	int maxSmallAsteroids = 20;
+	int maxSmallAsteroids = 10;
 	for (int i = 0; i < maxSmallAsteroids; i++)
 	{
 		// Random between 0 and 1919
