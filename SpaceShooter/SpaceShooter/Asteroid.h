@@ -19,5 +19,7 @@ public:
 	virtual void OnHealthReachZero() override;
 
 	virtual void Tick(float deltaTime) override;
+
+	virtual void OnExitedScreenSpace() override;
 };
 

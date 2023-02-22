@@ -32,7 +32,7 @@ World::World()
 	// Initialize random seed
 	srand(time(NULL));
 
-	int maxAsteroids = 5;
+	int maxAsteroids = 1;
 	for (int i = 0; i < maxAsteroids; i++)
 	{
 		// Random between 0 and 1919

@@ -31,7 +31,7 @@ void Projectile::Tick(float deltaTime)
 	bIsInstigatingCollision = true;
 	Position = sprite.getPosition();
 	Move(deltaTime);
-	if (Position.y < -20.f)
+	if (Position.y < -20.f || Position.x > 1940.f || Position.x < -20.f || Position.y > 1100.f)
 	{
 		OnExitedScreenSpace();
 	}
@@ -46,6 +46,8 @@ void Projectile::OnHit(ICollisionInterface* HitObject)
 	//We don't really care if we're hit
 	isTickOn = false;
 	bIsInstigatingCollision = false;
+
+	sprite.setPosition(20000, 20000);
 }
 
 void Projectile::OnExitedScreenSpace()

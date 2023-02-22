@@ -25,6 +25,17 @@ void Asteroid::OnHit(ICollisionInterface* HitObject)
 	SetIsTickOn(false);
 	bIsInstigatingCollision = false;
 	TakeDamage(health);
+
+	int newStartingPositionX = rand() % 400 + 400;
+	int newStartingPositionY = rand() % 200 + 400;
+
+	int newDirectionX = rand() % 360 + (-180);
+	int newDirectionY = rand() % 360 + (-180);
+
+	sprite.setPosition(newStartingPositionX, newStartingPositionY);
+	SetDirection(sf::Vector2f(newDirectionX, newDirectionY));
+	SetIsTickOn(true);
+	health = MaxHealth;
 }
 
 void Asteroid::OnHealthReachZero()
@@ -43,4 +54,19 @@ void Asteroid::Tick(float deltaTime)
 
 	//UI
 	UpdateHealthbarUI();
+}
+
+void Asteroid::OnExitedScreenSpace()
+{
+
+	int newStartingPositionX = rand() % 400 + 400;
+	int newStartingPositionY = rand() % 200 + 400;
+
+	int newDirectionX = rand() % 360 + (-180);
+	int newDirectionY = rand() % 360 + (-180);
+
+	sprite.setPosition(newStartingPositionX, newStartingPositionY);
+	SetDirection(sf::Vector2f(newDirectionX, newDirectionY));
+	SetIsTickOn(true);
+	health = MaxHealth;
 }
