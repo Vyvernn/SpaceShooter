@@ -36,4 +36,6 @@ private:
 	void UpdateHealthBar();
 
 	bool isFiring = false;
+
+	void UpdateRotation();
 };

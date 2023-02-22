@@ -19,6 +19,8 @@ void Ship::Movement(float inputX, float inputY, float deltaTime)
 {
 	// Move up, down, left, and right
 	sprite.move( (inputX * speed * deltaTime) , (inputY * speed * deltaTime) );
+
+	UpdateRotation();
 }
 
 void Ship::Fire()
@@ -66,33 +68,6 @@ void Ship::Tick(float deltaTime)
 	}
 
 
-
-	sf::Vector2i mousePositionInt = sf::Mouse::getPosition();
-	sf::Vector2f mousePosition = sf::Vector2f(static_cast<float>(mousePositionInt.x), static_cast<float>(mousePositionInt.y));
-
-
-	sf::Vector2f VectorTo = mousePosition - Position;
-	VectorTo = Normalize(VectorTo);
-
-	float DotProduct = Dot(VectorTo, sf::Vector2f(0, -1));
-
-
-	float Radians = acos(DotProduct);
-
-	float Angle = RadiansToDegrees(acos(DotProduct));
-
-	if (VectorTo.x < 0)
-	{
-		Angle *= -1;
-	}
-
-	sprite.setRotation(Angle);
-
-
-
-
-
-
 	Movement(horizontalValue, verticalValue, deltaTime);
 
 	horizontalValue = 0;
@@ -136,4 +111,28 @@ void Ship::UpdateHealthBar()
 
 	//UI
 	UpdateHealthbarUI();
+}
+
+void Ship::UpdateRotation()
+{
+	sf::Vector2i mousePositionInt = sf::Mouse::getPosition();
+	sf::Vector2f mousePosition = sf::Vector2f(static_cast<float>(mousePositionInt.x), static_cast<float>(mousePositionInt.y));
+
+
+	sf::Vector2f VectorTo = mousePosition - Position;
+	VectorTo = Normalize(VectorTo);
+
+	float DotProduct = Dot(VectorTo, sf::Vector2f(0, -1));
+
+
+	float Radians = acos(DotProduct);
+
+	float Angle = RadiansToDegrees(acos(DotProduct));
+
+	if (VectorTo.x < 0)
+	{
+		Angle *= -1;
+	}
+
+	sprite.setRotation(Angle);
 }
