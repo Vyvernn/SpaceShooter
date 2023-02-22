@@ -26,7 +26,6 @@ void Projectile::Move(float deltaTime)
 void Projectile::Tick(float deltaTime)
 {
 	if (!isTickOn) { return; }
-	UpdateRotation();
 	bIsInstigatingCollision = true;
 	Position = sprite.getPosition();
 	Move(deltaTime);

@@ -32,11 +32,8 @@ void Ship::Fire()
 
 	projPtr->SetIsTickOn(true);
 	projPtr->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y - 100.f);
-	projPtr->sprite.setRotation(this->sprite.getRotation());
-
-	
-
 	projPtr->SetDirection(GetDirectionToMousePos(projPtr->sprite));
+	projPtr->UpdateRotation();
 
 	// Remove the first element and push that element to the last
 	world->GetProjectileList().pop();
