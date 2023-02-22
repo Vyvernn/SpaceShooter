@@ -12,6 +12,8 @@ public:
 
 	Ship(float givenSpeed, World* world);
 
+	~Ship();
+
 	void Movement(float inputX, float inputY, float deltaTime);
 
 	void Fire();
@@ -38,4 +40,6 @@ private:
 	bool isFiring = false;
 
 	void UpdateRotation();
+
+
 };

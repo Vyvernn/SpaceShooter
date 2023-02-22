@@ -190,6 +190,14 @@ World::World()
 	LastFrameTime = clock.getElapsedTime();
 }
 
+World::~World()
+{
+	for (TickableObject* obj : ObjectList)
+	{
+		delete obj;
+	}
+}
+
 
 void World::Update()
 {
@@ -197,6 +205,9 @@ void World::Update()
 
 	float deltaTime = NewFrameTime.asSeconds() - LastFrameTime.asSeconds();
 
+	//In case we need to cap framerate
+	/*if (deltaTime > 16)
+	{*/
 
 	if (!bFirstTick)
 	{
@@ -225,20 +236,14 @@ void World::Update()
 		}
 	}
 
-	
+	for (TickableObject* NextObject : ObjectList)
+	{
+		NextObject->Tick(deltaTime);
+	}
 
-	//In case we need to cap framerate
-	/*if (deltaTime > 16)
-	{*/
+	LastFrameTime = NewFrameTime;
 
-		for (TickableObject* NextObject : ObjectList)
-		{
-			NextObject->Tick(deltaTime);
-		}
-
-		LastFrameTime = NewFrameTime;
-
-		bFirstTick = false;
+	bFirstTick = false;
 	/*}*/
 
 }

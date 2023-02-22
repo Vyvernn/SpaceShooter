@@ -15,6 +15,12 @@ Ship::Ship(float givenSpeed, World* world) :
 	InitHealthBar("Assets\\PNG\\UI\\buttonRed.png");
 }
 
+Ship::~Ship()
+{
+	delete HealthBarFillShape;
+	delete HealthBarSprite;
+}
+
 void Ship::Movement(float inputX, float inputY, float deltaTime)
 {
 	// Move up, down, left, and right

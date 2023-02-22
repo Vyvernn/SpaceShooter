@@ -18,6 +18,8 @@ public:
 
 	World();
 
+	~World();
+
 	void Update();
 
 	void Draw(sf::RenderWindow* window);
