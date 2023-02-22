@@ -43,7 +43,7 @@ World::World()
 		int asteroidSpeed = rand() % 250 + 1;
 		int asteroidDirectionX = rand() % 360 + (-180);
 		int asteroidDirectionY = rand() % 360 + (-180);
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 10, this, "Assets/PNG/Meteors/meteorBrown_big1.png");
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 50, this, "Assets/PNG/Meteors/meteorBrown_big1.png");
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid

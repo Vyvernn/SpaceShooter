@@ -17,5 +17,7 @@ public:
 	virtual void OnHit(ICollisionInterface* HitObject) override;
 
 	virtual void OnHealthReachZero() override;
+
+	virtual void Tick(float deltaTime) override;
 };
 

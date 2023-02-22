@@ -8,11 +8,13 @@ Projectile::Projectile(float givenSpeed, float givenDamage, World* givenWorld, s
 	speed = givenSpeed;
 	damage = givenDamage;
 	isTickOn = false;		// Turn this on when we call Ship.Fire
-	Radius = 5;
+	//Radius = 5;
 	bIsInstigatingCollision = false;
 	bCanBeHit = false;
 
 	direction = sf::Vector2f(0, -1);
+
+	Radius = max(sprite.getGlobalBounds().height, sprite.getGlobalBounds().width) / 2;
 }
 
 void Projectile::Move(float deltaTime)
