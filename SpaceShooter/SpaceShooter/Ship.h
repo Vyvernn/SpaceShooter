@@ -29,5 +29,7 @@ private:
 	float verticalValue = 0;
 
 	float horizontalValue = 0;
+
+	bool isFiring = false;
 	
 };

@@ -15,10 +15,11 @@ World::World()
 	int maxProjectiles = 40;
 	for (int i = 0; i < maxProjectiles; i++)
 	{
-		Projectile* projA = new Projectile(15, 5, this);
-		projA->sprite.move(900 + (i * 20), 400);		// TODO - Move outside of the screen
+		Projectile* projA = new Projectile(750, 5, this);
+
+		projA->sprite.move(20000, 20000);				// Moves outside of the screen
 		ObjectList.push_back(projA);					// Put them in this list you will be drawing them
-		ProjectileList.push_back(projA);				// Putting in them here just stores them.
+		ProjectileList.push(projA);				// This is a queue		// Putting in them here just stores them.
 	}
 
 

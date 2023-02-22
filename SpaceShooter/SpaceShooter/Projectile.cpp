@@ -9,6 +9,7 @@ Projectile::Projectile(float givenSpeed, float givenDamage, World* givenWorld)
 	damage = givenDamage;
 	isTickOn = false;		// Turn this on when we call Ship.Fire
 	Radius = 5;
+	bIsInstigatingCollision = false;
 }
 
 void Projectile::Move(float deltaTime)
@@ -21,13 +22,26 @@ void Projectile::Move(float deltaTime)
 void Projectile::Tick(float deltaTime)
 {
 	if (!isTickOn) { return; }
+	bIsInstigatingCollision = true;
 	Position = sprite.getPosition();
 	Move(deltaTime);
+	if (Position.y < -20.f)
+	{
+		OnExitedScreenSpace();
+	}
 }
 
 void Projectile::Hit(ICollisionInterface* Instigator)
 {
 	//We don't really care if we're hit
+	isTickOn = false;
+	bIsInstigatingCollision = false;
+}
+
+void Projectile::OnExitedScreenSpace()
+{
+	isTickOn = false;
+	bIsInstigatingCollision = false;
 }
 
 void Projectile::SetIsTickOn(bool value)

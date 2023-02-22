@@ -20,12 +20,17 @@ void Ship::Movement(float inputX, float inputY, float deltaTime)
 
 void Ship::Fire()
 {
-	// Enable the projectile Tick
-	world->GetProjectileList()[0]->SetIsTickOn(true);
-	// "Spawn" projectiles from the player's position
-	world->GetProjectileList()[0]->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y );
+	isFiring = true;
 
-	
+	// Get the first element on the Queue (list) and enable and spawn it
+	Projectile* projPtr = world->GetProjectileList().front();
+
+	projPtr->SetIsTickOn(true);
+	projPtr->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y - 100.f);
+
+	// Remove the first element and push that element to the last
+	world->GetProjectileList().pop();
+	world->GetProjectileList().push(projPtr);
 }
 
 void Ship::Tick(float deltaTime) 
@@ -59,9 +64,15 @@ void Ship::Tick(float deltaTime)
 	horizontalValue = 0;
 	verticalValue = 0;
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+
+	// Essentially allow us to only use 1 mouse button 
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isFiring)
 	{
 		Fire();
+	}
+	else if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		isFiring = false;
 	}
 }
 

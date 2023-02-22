@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <queue>
 #include <map>
 #include <SFML/Graphics.hpp>
 
@@ -20,9 +21,9 @@ public:
 
 	void Draw(sf::RenderWindow* window);
 
-	vector<TickableObject*> GetObjectList() { return ObjectList; };
+	vector<TickableObject*>& GetObjectList() { return ObjectList; };
 
-	vector<Projectile*> GetProjectileList() { return ProjectileList; }
+	queue<Projectile*>& GetProjectileList() { return ProjectileList; }
 
 	static sf::Texture GetTexture(string filepath);
 
@@ -32,7 +33,7 @@ public:
 private:
 	vector<TickableObject*> ObjectList;
 
-	vector<Projectile*> ProjectileList;
+	queue<Projectile*> ProjectileList;
 
 	sf::Clock clock;
 
