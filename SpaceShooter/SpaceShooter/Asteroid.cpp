@@ -26,21 +26,14 @@ void Asteroid::OnHit(ICollisionInterface* HitObject)
 	bIsInstigatingCollision = false;
 	TakeDamage(health);
 
-	int newStartingPositionX = rand() % 400 + 400;
-	int newStartingPositionY = rand() % 200 + 400;
-
-	int newDirectionX = rand() % 360 + (-180);
-	int newDirectionY = rand() % 360 + (-180);
-
-	sprite.setPosition(newStartingPositionX, newStartingPositionY);
-	SetDirection(sf::Vector2f(newDirectionX, newDirectionY));
-	SetIsTickOn(true);
-	health = MaxHealth;
+	Reset();
 }
 
 void Asteroid::OnHealthReachZero()
 {
 	SetIsTickOn(false);
+
+	Reset();
 }
 
 void Asteroid::Tick(float deltaTime)
@@ -58,7 +51,11 @@ void Asteroid::Tick(float deltaTime)
 
 void Asteroid::OnExitedScreenSpace()
 {
+	Reset();
+}
 
+void Asteroid::Reset()
+{
 	int newStartingPositionX = rand() % 400 + 400;
 	int newStartingPositionY = rand() % 200 + 400;
 
