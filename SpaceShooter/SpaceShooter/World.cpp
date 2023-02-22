@@ -10,6 +10,50 @@ map<string, sf::Texture> World::TextureMap;
 
 World::World()
 {
+	vector<string> BigAsteroidImageFilePaths;
+	
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_big1.png");
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_big2.png");
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_big3.png");
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_big4.png");
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_big1.png");
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_big2.png");
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_big3.png");
+	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_big4.png");
+	
+
+	vector<string> MediumAsteroidImageFilePaths;
+
+	MediumAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_med1.png");
+	MediumAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_med2.png");
+	MediumAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_med1.png");
+	MediumAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_med2.png");
+	
+
+	vector<string> SmallAsteroidImageFilePaths;
+
+	SmallAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_small1.png");
+	SmallAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_small2.png");
+	SmallAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_small1.png");
+	SmallAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_small2.png");
+		
+
+	vector<string> TinyAsteroidImageFilePaths;
+
+	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_tiny1.png");
+	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_tiny2.png");
+	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_tiny1.png");
+	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_tiny2.png");
+
+
+
+
+
+
+
+
+
+
 	Ship* ship = new Ship(425, this);
 
 	ObjectList.push_back(ship);
@@ -32,18 +76,21 @@ World::World()
 	// Initialize random seed
 	srand(time(NULL));
 
-	int maxAsteroids = 1;
-	for (int i = 0; i < maxAsteroids; i++)
+	int maxBigAsteroids = 5;
+	for (int i = 0; i < maxBigAsteroids; i++)
 	{
 		// Random between 0 and 1919
-		int randNumX = rand() % 1920;								
+		int randNumX = rand() % 1920;
 		int randNumY = rand() % 1080;
 
 		// Random between 1 and 250
 		int asteroidSpeed = rand() % 250 + 1;
 		int asteroidDirectionX = rand() % 360 + (-180);
 		int asteroidDirectionY = rand() % 360 + (-180);
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 50, this, "Assets/PNG/Meteors/meteorBrown_big1.png");
+
+		int ImageIndex = rand() % BigAsteroidImageFilePaths.size();
+
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 50, this, BigAsteroidImageFilePaths[ImageIndex]);
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid
@@ -54,6 +101,89 @@ World::World()
 		// Add to the list so it can be drawn and seen in the world
 		ObjectList.push_back(asteroid);
 	}
+
+
+	int maxMediumAsteroids = 10;
+	for (int i = 0; i < maxMediumAsteroids; i++)
+	{
+		// Random between 0 and 1919
+		int randNumX = rand() % 1920;
+		int randNumY = rand() % 1080;
+
+		// Random between 1 and 250
+		int asteroidSpeed = rand() % 250 + 1;
+		int asteroidDirectionX = rand() % 360 + (-180);
+		int asteroidDirectionY = rand() % 360 + (-180);
+
+
+		int ImageIndex = rand() % MediumAsteroidImageFilePaths.size();
+
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 20, this, MediumAsteroidImageFilePaths[ImageIndex]);
+		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+
+		// Randomly set the starting position of each asteroid
+		asteroid->sprite.move(randNumX, randNumY);
+		asteroid->SetIsTickOn(true);
+		//asteroid->bIsInstigatingCollision = true;
+
+		// Add to the list so it can be drawn and seen in the world
+		ObjectList.push_back(asteroid);
+	}
+
+	int maxSmallAsteroids = 20;
+	for (int i = 0; i < maxSmallAsteroids; i++)
+	{
+		// Random between 0 and 1919
+		int randNumX = rand() % 1920;
+		int randNumY = rand() % 1080;
+
+		// Random between 1 and 250
+		int asteroidSpeed = rand() % 250 + 1;
+		int asteroidDirectionX = rand() % 360 + (-180);
+		int asteroidDirectionY = rand() % 360 + (-180);
+
+
+		int ImageIndex = rand() % SmallAsteroidImageFilePaths.size();
+
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 5, this, SmallAsteroidImageFilePaths[ImageIndex]);
+		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+
+		// Randomly set the starting position of each asteroid
+		asteroid->sprite.move(randNumX, randNumY);
+		asteroid->SetIsTickOn(true);
+		//asteroid->bIsInstigatingCollision = true;
+
+		// Add to the list so it can be drawn and seen in the world
+		ObjectList.push_back(asteroid);
+	}
+
+	int maxTinyAsteroids = 25;
+	for (int i = 0; i < maxSmallAsteroids; i++)
+	{
+		// Random between 0 and 1919
+		int randNumX = rand() % 1920;
+		int randNumY = rand() % 1080;
+
+		// Random between 1 and 250
+		int asteroidSpeed = rand() % 250 + 1;
+		int asteroidDirectionX = rand() % 360 + (-180);
+		int asteroidDirectionY = rand() % 360 + (-180);
+
+
+		int ImageIndex = rand() % TinyAsteroidImageFilePaths.size();
+
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 0, this, TinyAsteroidImageFilePaths[0]);
+		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+
+		// Randomly set the starting position of each asteroid
+		asteroid->sprite.move(randNumX, randNumY);
+		asteroid->SetIsTickOn(true);
+		//asteroid->bIsInstigatingCollision = true;
+
+		// Add to the list so it can be drawn and seen in the world
+		ObjectList.push_back(asteroid);
+	}
+
 
 	
 
