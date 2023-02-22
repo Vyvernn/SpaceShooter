@@ -31,8 +31,10 @@ void Projectile::Tick(float deltaTime)
 	bIsInstigatingCollision = true;
 	Position = sprite.getPosition();
 	Move(deltaTime);
+
+
 	
-	if (Position.y < -200.f || Position.x > 2120.f || Position.x < -200.f || Position.y > 1280.f)
+	if (DistBetween(Position, sf::Vector2f(960, 540)) > 1300.f)
 	{
 		OnExitedScreenSpace();
 	}

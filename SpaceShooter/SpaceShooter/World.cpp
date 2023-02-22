@@ -55,6 +55,7 @@ World::World()
 
 
 	Ship* ship = new Ship(425, this);
+	ship->sprite.setPosition(960, 540);
 
 	ObjectList.push_back(ship);
 
@@ -74,113 +75,138 @@ World::World()
 	}
 
 	// Initialize random seed
-	srand(time(NULL));
+	srand(time(0));
 
-	int maxBigAsteroids = 10;
+	int maxBigAsteroids = 50;
 	for (int i = 0; i < maxBigAsteroids; i++)
 	{
-		// Random between 0 and 1919
-		int randNumX = rand() % 1920;
-		int randNumY = rand() % 1080;
+		//// Random between 0 and 1919
+		//int randNumX = rand() % 1920;
+		//int randNumY = rand() % 1080;
 
-		// Random between 1 and 250
-		int asteroidSpeed = rand() % 250 + 1;
-		int asteroidDirectionX = rand() % 360 + (-180);
-		int asteroidDirectionY = rand() % 360 + (-180);
+		//// Random between 1 and 250
+		//int asteroidDirectionX = rand() % 360 + (-180);
+		//int asteroidDirectionY = rand() % 360 + (-180);
 
+		int asteroidSpeed = rand() % 150 + 100;
 		int ImageIndex = rand() % BigAsteroidImageFilePaths.size();
 
 		Asteroid* asteroid = new Asteroid(asteroidSpeed, 30, 35, this, BigAsteroidImageFilePaths[ImageIndex]);
-		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+		asteroid->Reset();
+		ObjectList.push_back(asteroid);
+
+		//asteroid->SetDirection(sf::Vector2f(1, 1));
+
 
 		// Randomly set the starting position of each asteroid
-		asteroid->sprite.move(randNumX, randNumY);
-		asteroid->SetIsTickOn(true);
+		//asteroid->sprite.move(0, 0);
+		//asteroid->SetIsTickOn(true);
 		//asteroid->bIsInstigatingCollision = true;
 
 		// Add to the list so it can be drawn and seen in the world
-		ObjectList.push_back(asteroid);
 	}
 
 
-	int maxMediumAsteroids = 5;
+	int maxMediumAsteroids = 40;
 	for (int i = 0; i < maxMediumAsteroids; i++)
 	{
-		// Random between 0 and 1919
-		int randNumX = rand() % 1920;
-		int randNumY = rand() % 1080;
+		//// Random between 0 and 1919
+		//int randNumX = rand() % 1920;
+		//int randNumY = rand() % 1080;
 
-		// Random between 1 and 250
-		int asteroidSpeed = rand() % 250 + 1;
-		int asteroidDirectionX = rand() % 360 + (-180);
-		int asteroidDirectionY = rand() % 360 + (-180);
+		//// Random between 1 and 250
+		//int asteroidSpeed = rand() % 250 + 1;
+		//int asteroidDirectionX = rand() % 360 + (-180);
+		//int asteroidDirectionY = rand() % 360 + (-180);
 
 
+		//int ImageIndex = rand() % MediumAsteroidImageFilePaths.size();
+
+		//Asteroid* asteroid = new Asteroid(asteroidSpeed, 15, 20, this, MediumAsteroidImageFilePaths[ImageIndex]);
+		//asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+
+		//// Randomly set the starting position of each asteroid
+		//asteroid->sprite.move(randNumX, randNumY);
+		//asteroid->SetIsTickOn(true);
+		////asteroid->bIsInstigatingCollision = true;
+
+		//// Add to the list so it can be drawn and seen in the world
+		//ObjectList.push_back(asteroid);
+
+		int asteroidSpeed = rand() % 150 + 150;
 		int ImageIndex = rand() % MediumAsteroidImageFilePaths.size();
 
 		Asteroid* asteroid = new Asteroid(asteroidSpeed, 15, 20, this, MediumAsteroidImageFilePaths[ImageIndex]);
-		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
-
-		// Randomly set the starting position of each asteroid
-		asteroid->sprite.move(randNumX, randNumY);
-		asteroid->SetIsTickOn(true);
-		//asteroid->bIsInstigatingCollision = true;
-
-		// Add to the list so it can be drawn and seen in the world
+		asteroid->Reset();
 		ObjectList.push_back(asteroid);
 	}
 
-	int maxSmallAsteroids = 10;
+	int maxSmallAsteroids = 30;
 	for (int i = 0; i < maxSmallAsteroids; i++)
 	{
-		// Random between 0 and 1919
-		int randNumX = rand() % 1920;
-		int randNumY = rand() % 1080;
+		//// Random between 0 and 1919
+		//int randNumX = rand() % 1920;
+		//int randNumY = rand() % 1080;
 
-		// Random between 1 and 250
-		int asteroidSpeed = rand() % 250 + 1;
-		int asteroidDirectionX = rand() % 360 + (-180);
-		int asteroidDirectionY = rand() % 360 + (-180);
+		//// Random between 1 and 250
+		//int asteroidSpeed = rand() % 250 + 1;
+		//int asteroidDirectionX = rand() % 360 + (-180);
+		//int asteroidDirectionY = rand() % 360 + (-180);
 
 
+		//int ImageIndex = rand() % SmallAsteroidImageFilePaths.size();
+
+		//Asteroid* asteroid = new Asteroid(asteroidSpeed, 3, 10, this, SmallAsteroidImageFilePaths[ImageIndex]);
+		//asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+
+		//// Randomly set the starting position of each asteroid
+		//asteroid->sprite.move(randNumX, randNumY);
+		//asteroid->SetIsTickOn(true);
+		////asteroid->bIsInstigatingCollision = true;
+
+		//// Add to the list so it can be drawn and seen in the world
+		//ObjectList.push_back(asteroid);
+
+
+		int asteroidSpeed = rand() % 150 + 200;
 		int ImageIndex = rand() % SmallAsteroidImageFilePaths.size();
 
 		Asteroid* asteroid = new Asteroid(asteroidSpeed, 3, 10, this, SmallAsteroidImageFilePaths[ImageIndex]);
-		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
-
-		// Randomly set the starting position of each asteroid
-		asteroid->sprite.move(randNumX, randNumY);
-		asteroid->SetIsTickOn(true);
-		//asteroid->bIsInstigatingCollision = true;
-
-		// Add to the list so it can be drawn and seen in the world
+		asteroid->Reset();
 		ObjectList.push_back(asteroid);
 	}
 
-	int maxTinyAsteroids = 25;
+	int maxTinyAsteroids = 75;
 	for (int i = 0; i < maxSmallAsteroids; i++)
 	{
-		// Random between 0 and 1919
-		int randNumX = rand() % 1920;
-		int randNumY = rand() % 1080;
+		//// Random between 0 and 1919
+		//int randNumX = rand() % 1920;
+		//int randNumY = rand() % 1080;
 
-		// Random between 1 and 250
-		int asteroidSpeed = rand() % 250 + 1;
-		int asteroidDirectionX = rand() % 360 + (-180);
-		int asteroidDirectionY = rand() % 360 + (-180);
+		//// Random between 1 and 250
+		//int asteroidSpeed = rand() % 250 + 1;
+		//int asteroidDirectionX = rand() % 360 + (-180);
+		//int asteroidDirectionY = rand() % 360 + (-180);
 
 
+		//int ImageIndex = rand() % TinyAsteroidImageFilePaths.size();
+
+		//Asteroid* asteroid = new Asteroid(asteroidSpeed, 0, 5, this, TinyAsteroidImageFilePaths[0]);
+		//asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
+
+		//// Randomly set the starting position of each asteroid
+		//asteroid->sprite.move(randNumX, randNumY);
+		//asteroid->SetIsTickOn(true);
+		////asteroid->bIsInstigatingCollision = true;
+
+		//// Add to the list so it can be drawn and seen in the world
+		//ObjectList.push_back(asteroid);
+
+		int asteroidSpeed = rand() % 150 + 600;
 		int ImageIndex = rand() % TinyAsteroidImageFilePaths.size();
 
 		Asteroid* asteroid = new Asteroid(asteroidSpeed, 0, 5, this, TinyAsteroidImageFilePaths[0]);
-		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
-
-		// Randomly set the starting position of each asteroid
-		asteroid->sprite.move(randNumX, randNumY);
-		asteroid->SetIsTickOn(true);
-		//asteroid->bIsInstigatingCollision = true;
-
-		// Add to the list so it can be drawn and seen in the world
+		asteroid->Reset();
 		ObjectList.push_back(asteroid);
 	}
 

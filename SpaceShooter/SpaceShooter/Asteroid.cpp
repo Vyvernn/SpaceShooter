@@ -1,6 +1,7 @@
 #include "Asteroid.h"
 #include "TickableObject.h"
 #include "World.h"
+#include "ShooterFunction.h"
 
 Asteroid::Asteroid(float Speed, float Damage, float defaultHealth,  World* givenWorld, string textureFilePath) 
 	: Projectile(Speed, Damage, givenWorld, textureFilePath)
@@ -70,13 +71,20 @@ void Asteroid::OnExitedScreenSpace()
 
 void Asteroid::Reset()
 {
-	int newStartingPositionX = rand() % 2000;
-	int newStartingPositionY = rand() % 1100;
+	int DirX = rand() % 100 + (-50);
+	int DirY = rand() % 100 + (-50);
+
+	sf::Vector2f RespawnDirection = sf::Vector2f(DirX, DirY);
+	RespawnDirection = Normalize(RespawnDirection);
+
+	sf::Vector2f Origin = sf::Vector2f(960, 540);
+
+	sf::Vector2f RespawnPosition = Origin  + (RespawnDirection * 1500.f);
 
 	int newDirectionX = rand() % 360 + (-180);
 	int newDirectionY = rand() % 360 + (-180);
 
-	sprite.setPosition(newStartingPositionX, newStartingPositionY);
+	sprite.setPosition(RespawnPosition.x, RespawnPosition.y);
 	SetDirection(sf::Vector2f(newDirectionX, newDirectionY));
 	SetIsTickOn(true);
 	health = MaxHealth;

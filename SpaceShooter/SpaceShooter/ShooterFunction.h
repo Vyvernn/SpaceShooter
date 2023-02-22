@@ -20,6 +20,18 @@ static bool RadialSpriteCollision(sf::Vector2f PositionA, float RadiusA,  sf::Ve
 	return DistSqrd < MinDistSqrd;
 };
 
+static float DistBetween(sf::Vector2f PositionA, sf::Vector2f PositionB)
+{
+	float xDist = PositionA.x - PositionB.x;
+	float yDist = PositionA.y - PositionB.y;
+
+	float xDistSqrd = xDist * xDist;
+	float yDistSqrd = yDist * yDist;
+
+
+	return sqrt(xDistSqrd = yDistSqrd);
+}
+
 static float Lerp(float A, float B, float Alpha)
 {
 
