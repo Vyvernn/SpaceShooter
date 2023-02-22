@@ -16,7 +16,6 @@ World::World()
 	for (int i = 0; i < maxProjectiles; i++)
 	{
 		Projectile* projA = new Projectile(750, 5, this);
-
 		projA->sprite.move(20000, 20000);				// Moves outside of the screen
 		ObjectList.push_back(projA);					// Put them in this list you will be drawing them
 		ProjectileList.push(projA);				// This is a queue		// Putting in them here just stores them.
@@ -46,7 +45,10 @@ void World::Update()
 					{
 						if (ICollisionInterface* InterfaceB = dynamic_cast<ICollisionInterface*>(ObjectB))
 						{
-							InterfaceA->CheckCollisionWith(InterfaceB);
+							if (InterfaceB->bCanBeHit)
+							{
+								InterfaceA->CheckCollisionWith(InterfaceB);
+							}
 						}
 					}
 				}
@@ -79,7 +81,8 @@ void World::Draw(sf::RenderWindow* window)
 		{
 			if (HealthInterface->bShowHealthBar)
 			{
-				window->draw(HealthInterface->HealthBarSprite);
+				window->draw(*HealthInterface->HealthBarSprite);
+				window->draw(*HealthInterface->HealthBarFillShape);
 			}
 		}
 	}

@@ -13,6 +13,8 @@ public:
 
 	virtual void Hit(ICollisionInterface* Instigator) override;
 
+	virtual void OnHit(ICollisionInterface* HitObject) override;
+
 	virtual void OnExitedScreenSpace();
 
 	float GetDamage() { return damage; };

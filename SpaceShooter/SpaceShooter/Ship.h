@@ -16,11 +16,14 @@ public:
 
 	void Fire();
 
+
 	virtual void Tick(float deltaTime) override;
 
 	virtual void OnHealthReachZero() override;
 
-	virtual void Hit(ICollisionInterface* Instigator);
+	virtual void Hit(ICollisionInterface* Instigator) override;
+
+	virtual void OnHit(ICollisionInterface* HitObject) override;
 
 private:
 
@@ -30,6 +33,7 @@ private:
 
 	float horizontalValue = 0;
 
+	void UpdateHealthBar();
+
 	bool isFiring = false;
-	
 };

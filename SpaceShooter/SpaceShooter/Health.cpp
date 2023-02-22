@@ -1,5 +1,6 @@
 #include "Health.h"
 #include "World.h"
+#include "ShooterFunction.h"
 
 void IHealthInterface::InitHealthBar()
 {
@@ -7,34 +8,30 @@ void IHealthInterface::InitHealthBar()
 
 void IHealthInterface::InitHealthBar(string textureFilePath)
 {
-	bShowHealthBar = true;
-	sf::Texture texture = World::GetTexture(textureFilePath);
-
-	if (&texture)
-	{
-		HealthBarSprite.setTexture(texture, true);
-		HealthBarSprite.setOrigin(HealthBarSprite.getGlobalBounds().width / 2, HealthBarSprite.getGlobalBounds().height / 2);
-	}
+	CreateHealthbar(textureFilePath);
 }
 
 void IHealthInterface::InitHealthBar(float givenHealth)
 {
 	health = givenHealth;
+
+	if (health > MaxHealth)
+	{
+		MaxHealth = health;
+	}
 }
 
 void IHealthInterface::InitHealthBar(string textureFilePath, float givenHealth)
 {
-	bShowHealthBar = true;
-	sf::Texture texture = World::GetTexture(textureFilePath);
+	health = givenHealth;
 
-	if (&texture)
+	if (health > MaxHealth)
 	{
-		HealthBarSprite.setTexture(texture, true);
-		HealthBarSprite.setOrigin(HealthBarSprite.getGlobalBounds().width / 2, HealthBarSprite.getGlobalBounds().height / 2);
+		MaxHealth = health;
 	}
 
+	CreateHealthbar(textureFilePath);
 
-	health = givenHealth;
 }
 
 
@@ -57,3 +54,34 @@ void IHealthInterface::DrawHealthBar()
 
 	}
 }
+
+void IHealthInterface::CreateHealthbar(string textureFilePath)
+{
+	bShowHealthBar = true;
+	sf::Texture texture = World::GetTexture(textureFilePath);
+
+	if (&texture)
+	{
+		HealthBarWidth = static_cast<int>(texture.getSize().x);
+		HealthBarHeight = static_cast<int>(texture.getSize().y);
+
+
+		HealthBarSprite = new sf::Sprite();
+		HealthBarSprite->setTexture(texture, true);
+		HealthBarSprite->setOrigin(HealthBarWidth / 2, HealthBarHeight / 2);
+
+	}
+
+	HealthBarFillShape = new sf::RectangleShape();
+}
+
+void IHealthInterface::UpdateHealthbarUI()
+{
+	HealthBarFillShape->setFillColor(sf::Color::Green);
+
+	float HealthbarRatio = health / MaxHealth;
+
+	HealthBarFillShape->setSize(sf::Vector2f(Lerp(0, HealthBarWidth, HealthbarRatio), HealthBarHeight));
+	HealthBarFillShape->setOrigin(HealthBarFillShape->getSize().x / 2, HealthBarHeight / 2);
+}
+

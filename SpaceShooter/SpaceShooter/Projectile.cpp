@@ -10,6 +10,7 @@ Projectile::Projectile(float givenSpeed, float givenDamage, World* givenWorld)
 	isTickOn = false;		// Turn this on when we call Ship.Fire
 	Radius = 5;
 	bIsInstigatingCollision = false;
+	bCanBeHit = false;
 }
 
 void Projectile::Move(float deltaTime)
@@ -32,6 +33,10 @@ void Projectile::Tick(float deltaTime)
 }
 
 void Projectile::Hit(ICollisionInterface* Instigator)
+{
+}
+
+void Projectile::OnHit(ICollisionInterface* HitObject)
 {
 	//We don't really care if we're hit
 	isTickOn = false;
