@@ -83,7 +83,7 @@ void Ship::Tick(float deltaTime)
 
 	if (VectorTo.x < 0)
 	{
-		Angle -= 180;
+		Angle *= -1;
 	}
 
 	sprite.setRotation(Angle);
