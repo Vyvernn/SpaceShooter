@@ -20,8 +20,12 @@ public:
 	float GetDamage() { return damage; };
 
 	void SetIsTickOn(bool value);
+
+	void SetDirection(sf::Vector2f newDirection);
 private:
 	float speed;
 	float damage;
 	bool isTickOn;
+
+	sf::Vector2f direction;
 };

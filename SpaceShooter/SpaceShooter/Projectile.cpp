@@ -11,13 +11,16 @@ Projectile::Projectile(float givenSpeed, float givenDamage, World* givenWorld)
 	Radius = 5;
 	bIsInstigatingCollision = false;
 	bCanBeHit = false;
+
+	direction = sf::Vector2f(0, -1);
 }
 
 void Projectile::Move(float deltaTime)
 {
 	// TO-DO: move in the facing direction
 	// Move up every frame for now
-	sprite.move(0.f, -speed * deltaTime);
+	sprite.move(direction * speed * deltaTime);
+	//sprite.move(0.f, -speed * deltaTime);
 }
 
 void Projectile::Tick(float deltaTime)
@@ -52,4 +55,9 @@ void Projectile::OnExitedScreenSpace()
 void Projectile::SetIsTickOn(bool value)
 {
 	isTickOn = value;
+}
+
+void Projectile::SetDirection(sf::Vector2f newDirection)
+{
+	direction = Normalize(newDirection);
 }
