@@ -41,4 +41,6 @@ private:
 
 	static bool LoadTexture(string filepath);
 
+	bool bFirstTick = true;
+
 };

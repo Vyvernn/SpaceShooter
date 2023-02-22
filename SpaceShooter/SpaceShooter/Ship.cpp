@@ -33,7 +33,7 @@ void Ship::Fire()
 	projPtr->SetOwner(this);
 
 	projPtr->SetIsTickOn(true);
-	projPtr->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y - 100.f);
+	projPtr->sprite.setPosition(this->sprite.getPosition().x, this->sprite.getPosition().y);
 	projPtr->SetDirection(GetDirectionToMousePos(projPtr->sprite));
 	projPtr->UpdateRotation();
 

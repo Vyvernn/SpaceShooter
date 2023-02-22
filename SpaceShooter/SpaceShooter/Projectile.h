@@ -6,7 +6,8 @@
 class Projectile : public TickableObject, public ICollisionInterface
 {
 public:
-	Projectile(float givenSpeed, float givenDamage, World* givenWorld);
+	Projectile(float givenSpeed, float givenDamage, World* givenWorld, string Filepath);
+
 	void Move(float deltaTime);
 
 	virtual void Tick(float deltaTime) override;
@@ -24,6 +25,7 @@ public:
 	void SetDirection(sf::Vector2f newDirection);
 
 	void UpdateRotation();
+
 private:
 	float speed;
 	float damage;

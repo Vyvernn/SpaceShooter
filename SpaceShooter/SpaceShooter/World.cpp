@@ -1,8 +1,8 @@
 #include "World.h"
 #include "TickableObject.h"
 #include "Ship.h"
-#include "Projectile.h"
 #include "CollisionComponent.h"
+#include "Asteroid.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -17,7 +17,7 @@ World::World()
 	int maxProjectiles = 40;
 	for (int i = 0; i < maxProjectiles; i++)
 	{
-		Projectile* projectile = new Projectile(750, 5, this);
+		Projectile* projectile = new Projectile(750, 5, this, "Assets/PNG/Effects/BasicProjectile.png");
 
 		// Set starting position to outside of the screen
 		projectile->sprite.move(20000, 20000);
@@ -43,7 +43,7 @@ World::World()
 		int asteroidSpeed = rand() % 250 + 1;
 		int asteroidDirectionX = rand() % 360 + (-180);
 		int asteroidDirectionY = rand() % 360 + (-180);
-		Projectile* asteroid = new Projectile(asteroidSpeed, 10, this);
+		Asteroid* asteroid = new Asteroid(asteroidSpeed, 10, this, "Assets/PNG/Meteors/meteorBrown_big1.png");
 		asteroid->SetDirection(sf::Vector2f(asteroidDirectionX, asteroidDirectionY));
 
 		// Randomly set the starting position of each asteroid
@@ -67,29 +67,35 @@ void World::Update()
 
 	float deltaTime = NewFrameTime.asSeconds() - LastFrameTime.asSeconds();
 
-	for (TickableObject* ObjectA : ObjectList)
+
+	if (!bFirstTick)
 	{
-		if (ICollisionInterface* InterfaceA = dynamic_cast<ICollisionInterface*>(ObjectA))
+		for (TickableObject* ObjectA : ObjectList)
 		{
-			if (InterfaceA->bIsInstigatingCollision)
+			if (ICollisionInterface* InterfaceA = dynamic_cast<ICollisionInterface*>(ObjectA))
 			{
-				for (TickableObject* ObjectB : ObjectList)
+				if (InterfaceA->bIsInstigatingCollision)
 				{
-					if (ObjectA != ObjectB)
+					for (TickableObject* ObjectB : ObjectList)
 					{
-						if (ICollisionInterface* InterfaceB = dynamic_cast<ICollisionInterface*>(ObjectB))
+						if (ObjectA != ObjectB)
 						{
-							if (InterfaceB->bCanBeHit)
+							if (ICollisionInterface* InterfaceB = dynamic_cast<ICollisionInterface*>(ObjectB))
 							{
-								InterfaceA->CheckCollisionWith(InterfaceB);
+								if (InterfaceB->bCanBeHit)
+								{
+									InterfaceA->CheckCollisionWith(InterfaceB);
+								}
 							}
 						}
 					}
 				}
+
 			}
-			
 		}
 	}
+
+	
 
 	//In case we need to cap framerate
 	/*if (deltaTime > 16)
@@ -101,6 +107,8 @@ void World::Update()
 		}
 
 		LastFrameTime = NewFrameTime;
+
+		bFirstTick = false;
 	/*}*/
 
 }
