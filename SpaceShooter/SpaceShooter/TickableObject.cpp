@@ -10,7 +10,7 @@ TickableObject::TickableObject(std::string textureFilePath, World* givenWorld)
 	if (&texture)
 	{
 		sprite.setTexture(texture, true);
-		sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
+		sprite.setOrigin(static_cast<float>(texture.getSize().x) / 2.f, static_cast<float>(texture.getSize().y) / 2.f);
 	}
 }
 

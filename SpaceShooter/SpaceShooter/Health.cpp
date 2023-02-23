@@ -62,8 +62,8 @@ void IHealthInterface::CreateHealthbar(string textureFilePath)
 
 	if (&texture)
 	{
-		HealthBarWidth = static_cast<int>(texture.getSize().x);
-		HealthBarHeight = static_cast<int>(texture.getSize().y);
+		HealthBarWidth = static_cast<float>(texture.getSize().x);
+		HealthBarHeight = static_cast<float>(texture.getSize().y);
 
 
 		HealthBarSprite = new sf::Sprite();

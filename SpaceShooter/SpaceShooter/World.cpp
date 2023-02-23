@@ -10,7 +10,9 @@ map<string, sf::Texture> World::TextureMap;
 
 World::World()
 {
-	vector<string> BigAsteroidImageFilePaths;
+
+
+	/*vector<string> BigAsteroidImageFilePaths;
 	
 	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_big1.png");
 	BigAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_big2.png");
@@ -43,14 +45,7 @@ World::World()
 	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_tiny1.png");
 	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorBrown_tiny2.png");
 	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_tiny1.png");
-	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_tiny2.png");
-
-
-
-
-
-
-
+	TinyAsteroidImageFilePaths.push_back("Assets/PNG/Meteors/meteorGrey_tiny2.png");*/
 
 
 
@@ -75,8 +70,10 @@ World::World()
 	}
 
 	// Initialize random seed
-	srand(time(0));
+	srand(0);
 
+
+	//Big Asteroids
 	int maxBigAsteroids = 50;
 	for (int i = 0; i < maxBigAsteroids; i++)
 	{
@@ -84,12 +81,13 @@ World::World()
 		int asteroidSpeed = rand() % 150 + 100;
 		int ImageIndex = rand() % BigAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 30, 35, this, BigAsteroidImageFilePaths[ImageIndex]);
+		Asteroid* asteroid = new Asteroid(static_cast<float>(asteroidSpeed), 30, 35, this, BigAsteroidImageFilePaths[ImageIndex]);
 		asteroid->Reset();
 		ObjectList.push_back(asteroid);
 	}
 
 
+	//Medium Asteroids
 	int maxMediumAsteroids = 40;
 	for (int i = 0; i < maxMediumAsteroids; i++)
 	{
@@ -97,11 +95,12 @@ World::World()
 		int asteroidSpeed = rand() % 150 + 150;
 		int ImageIndex = rand() % MediumAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 15, 20, this, MediumAsteroidImageFilePaths[ImageIndex]);
+		Asteroid* asteroid = new Asteroid(static_cast<float>(asteroidSpeed), 10, 20, this, MediumAsteroidImageFilePaths[ImageIndex]);
 		asteroid->Reset();
 		ObjectList.push_back(asteroid);
 	}
 
+	//Small Asteroids
 	int maxSmallAsteroids = 30;
 	for (int i = 0; i < maxSmallAsteroids; i++)
 	{
@@ -110,11 +109,12 @@ World::World()
 		int asteroidSpeed = rand() % 150 + 200;
 		int ImageIndex = rand() % SmallAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 3, 10, this, SmallAsteroidImageFilePaths[ImageIndex]);
+		Asteroid* asteroid = new Asteroid(static_cast<float>(asteroidSpeed), 3, 10, this, SmallAsteroidImageFilePaths[ImageIndex]);
 		asteroid->Reset();
 		ObjectList.push_back(asteroid);
 	}
 
+	//tiny Asteroids
 	int maxTinyAsteroids = 75;
 	for (int i = 0; i < maxSmallAsteroids; i++)
 	{
@@ -122,7 +122,7 @@ World::World()
 		int asteroidSpeed = rand() % 150 + 600;
 		int ImageIndex = rand() % TinyAsteroidImageFilePaths.size();
 
-		Asteroid* asteroid = new Asteroid(asteroidSpeed, 0, 5, this, TinyAsteroidImageFilePaths[0]);
+		Asteroid* asteroid = new Asteroid(static_cast<float>(asteroidSpeed), 0, 5, this, TinyAsteroidImageFilePaths[0]);
 		asteroid->Reset();
 		ObjectList.push_back(asteroid);
 	}

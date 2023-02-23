@@ -74,7 +74,7 @@ void Asteroid::Reset()
 	int DirX = rand() % 100 + (-50);
 	int DirY = rand() % 100 + (-50);
 
-	sf::Vector2f RespawnDirection = sf::Vector2f(DirX, DirY);
+	sf::Vector2f RespawnDirection = sf::Vector2f(static_cast<float>(DirX), static_cast<float>(DirY));
 	RespawnDirection = Normalize(RespawnDirection);
 
 	sf::Vector2f Origin = sf::Vector2f(960, 540);
@@ -85,7 +85,7 @@ void Asteroid::Reset()
 	int newDirectionY = rand() % 360 + (-180);
 
 	sprite.setPosition(RespawnPosition.x, RespawnPosition.y);
-	SetDirection(sf::Vector2f(newDirectionX, newDirectionY));
+	SetDirection(sf::Vector2f(static_cast<float>(newDirectionX), static_cast<float>(newDirectionY)));
 	SetIsTickOn(true);
 	health = MaxHealth;
 }
